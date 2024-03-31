@@ -1,0 +1,13 @@
+const solanaWeb3 = require('@solana/web3.js');
+
+// 连接到 Solana 主网
+const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet'));
+
+// 查询区块高度
+connection.getSlot()
+  .then(slot => {
+    console.log('Current slot:', slot);
+  })
+  .catch(error => {
+    console.error('Error occurred:', error);
+  });
