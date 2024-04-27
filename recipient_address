@@ -1,0 +1,10 @@
+# 接收者地址和金额
+recipient_address = "recipient_address"
+amount = 0.01  # 发送的 BTC 数量
+
+try:
+    # 创建并发送交易
+    tx_id = rpc_connection.sendtoaddress(recipient_address, amount)
+    print("交易成功，交易哈希:", tx_id)
+except JSONRPCException as e:
+    print("RPC 错误:", e)
