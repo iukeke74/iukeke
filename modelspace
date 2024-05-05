@@ -1,0 +1,23 @@
+import ezdxf
+from ezdxf import units
+
+# 创建一个新的 DXF 文档
+doc = ezdxf.new("R2010")
+
+# 设置全局单元
+doc.units = units.MM  # 设置单位为毫米
+
+# 获取模型空间以开始绘制
+msp = doc.modelspace()
+
+# 绘制矩形
+msp.add_lwpolyline([(0, 0), (100, 0), (100, 50), (0, 50), (0, 0)], dxfattribs={"closed": True})
+
+# 绘制一个圆
+msp.add_circle(center=(50, 25), radius=20)
+
+# 保存 DXF 文件
+output_file = "simple_drawing.dxf"
+doc.saveas(output_file)
+
+print(f"DXF 文件已保存至 {output_file}")
